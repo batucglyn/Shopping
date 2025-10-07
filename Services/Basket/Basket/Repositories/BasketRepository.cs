@@ -30,7 +30,7 @@ public class BasketRepository : IBasketRepositories
         await _redisCache.RemoveAsync(userName);
     }
 
-    public async Task<ShoppingCart> UpdateBasket(ShoppingCart shoppingCart)
+    public async Task<ShoppingCart> UpsertBasket(ShoppingCart shoppingCart)
     {
         await _redisCache.SetStringAsync(shoppingCart.UserName, JsonConvert.SerializeObject(shoppingCart));
 

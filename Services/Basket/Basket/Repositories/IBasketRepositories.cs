@@ -6,7 +6,7 @@ public interface IBasketRepositories
 {
 
     Task<ShoppingCart> GetBasket(string userName);
-    Task<ShoppingCart> UpdateBasket(ShoppingCart shoppingCart);
+    Task<ShoppingCart> UpsertBasket(ShoppingCart shoppingCart);
     Task  DeleteBasket(string userName);
 
 
