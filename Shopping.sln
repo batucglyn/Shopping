@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{56A75834-5CB7-4C89-8A27-66B9B87A5214}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog", "Services\Catalog\Catalog.csproj", "{ECA414F8-BF35-455E-8E2B-0BC89A987612}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{D8856F97-57D9-4DAF-B386-59A96A5D1350}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{7EF79114-F060-47FD-A252-AE2E02BF65C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket", "Services\Basket\Basket\Basket.csproj", "{B23FCAAB-0447-497A-8BDC-B723911381EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECA414F8-BF35-455E-8E2B-0BC89A987612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA414F8-BF35-455E-8E2B-0BC89A987612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA414F8-BF35-455E-8E2B-0BC89A987612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA414F8-BF35-455E-8E2B-0BC89A987612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23FCAAB-0447-497A-8BDC-B723911381EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23FCAAB-0447-497A-8BDC-B723911381EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23FCAAB-0447-497A-8BDC-B723911381EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23FCAAB-0447-497A-8BDC-B723911381EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ECA414F8-BF35-455E-8E2B-0BC89A987612} = {7EF79114-F060-47FD-A252-AE2E02BF65C3}
+		{D8856F97-57D9-4DAF-B386-59A96A5D1350} = {56A75834-5CB7-4C89-8A27-66B9B87A5214}
+		{7EF79114-F060-47FD-A252-AE2E02BF65C3} = {56A75834-5CB7-4C89-8A27-66B9B87A5214}
+		{B23FCAAB-0447-497A-8BDC-B723911381EF} = {D8856F97-57D9-4DAF-B386-59A96A5D1350}
+	EndGlobalSection
+EndGlobal

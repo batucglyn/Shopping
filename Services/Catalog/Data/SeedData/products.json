@@ -1,0 +1,162 @@
+[
+  {
+    "Id": "602d2149e773f2a3990b47f6",
+    "Name": "Nike Air Zoom Pegasus 39",
+    "Description": "Comfortable running shoes designed for daily training.",
+    "Price": 2999,
+    "ImageFile": "images/products/nike_pegasus_39.png",
+    "Summary": "Lightweight, breathable running shoes.",
+    "Type": {
+      "Id": "63ca5d4bc3a8a58f47299f97",
+      "Name": "Shoes"
+    },
+    "Brand": {
+      "Id": "63ca5e7ec90ff5c8f44d5ac8",
+      "Name": "Nike"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b47f7",
+    "Name": "Adidas Ultraboost 22",
+    "Description": "Premium performance running shoes with responsive cushioning.",
+    "Price": 3499,
+    "ImageFile": "images/products/adidas_ultraboost_22.png",
+    "Summary": "Boost cushioning for maximum comfort.",
+    "Type": {
+      "Id": "63ca5d4bc3a8a58f47299f97",
+      "Name": "Shoes"
+    },
+    "Brand": {
+      "Id": "63ca5e40e0aa3968b549af53",
+      "Name": "Adidas"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b47f8",
+    "Name": "Puma Essentials Logo T-Shirt",
+    "Description": "Classic cotton t-shirt with Puma logo.",
+    "Price": 499,
+    "ImageFile": "images/products/puma_logo_tshirt.png",
+    "Summary": "Casual wear cotton t-shirt.",
+    "Type": {
+      "Id": "63ca5d6d958e43ee1cd375fe",
+      "Name": "T-Shirts"
+    },
+    "Brand": {
+      "Id": "63ca5e728c4cff9708ada2a6",
+      "Name": "Puma"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b47f9",
+    "Name": "Under Armour Challenger Shorts",
+    "Description": "Breathable and lightweight football shorts.",
+    "Price": 799,
+    "ImageFile": "images/products/ua_challenger_shorts.png",
+    "Summary": "Perfect for football training.",
+    "Type": {
+      "Id": "63ca5d7d380d20dce7f06ebc",
+      "Name": "Shorts"
+    },
+    "Brand": {
+      "Id": "63ca5e655ec1fdc49bd9327d",
+      "Name": "Under Armour"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b480",
+    "Name": "New Balance Windbreaker Jacket",
+    "Description": "Lightweight windbreaker jacket for outdoor activities.",
+    "Price": 1599,
+    "ImageFile": "images/products/nb_windbreaker.png",
+    "Summary": "Protects against wind and light rain.",
+    "Type": {
+      "Id": "63ca5d8849bc19321bb8e5f1",
+      "Name": "Jackets"
+    },
+    "Brand": {
+      "Id": "63ca5e59065163c16451bd73",
+      "Name": "New Balance"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b481",
+    "Name": "Nike Dri-FIT Training T-Shirt",
+    "Description": "Moisture-wicking fabric keeps you dry during workouts.",
+    "Price": 599,
+    "ImageFile": "images/products/nike_drifit_tshirt.png",
+    "Summary": "Performance training t-shirt.",
+    "Type": {
+      "Id": "63ca5d6d958e43ee1cd375fe",
+      "Name": "T-Shirts"
+    },
+    "Brand": {
+      "Id": "63ca5e7ec90ff5c8f44d5ac8",
+      "Name": "Nike"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b482",
+    "Name": "Adidas Predator Football Shoes",
+    "Description": "High-performance football boots with enhanced grip.",
+    "Price": 2499,
+    "ImageFile": "images/products/adidas_predator.png",
+    "Summary": "Perfect for firm ground football.",
+    "Type": {
+      "Id": "63ca5d4bc3a8a58f47299f97",
+      "Name": "Shoes"
+    },
+    "Brand": {
+      "Id": "63ca5e40e0aa3968b549af53",
+      "Name": "Adidas"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b483",
+    "Name": "Puma Sportstyle Backpack",
+    "Description": "Durable backpack for sports and casual use.",
+    "Price": 899,
+    "ImageFile": "images/products/puma_backpack.png",
+    "Summary": "Spacious and comfortable backpack.",
+    "Type": {
+      "Id": "63ca5d9a77c2f2d42f8d6ea5",
+      "Name": "Accessories"
+    },
+    "Brand": {
+      "Id": "63ca5e728c4cff9708ada2a6",
+      "Name": "Puma"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b484",
+    "Name": "Under Armour Storm Jacket",
+    "Description": "Water-repellent jacket with modern fit.",
+    "Price": 1999,
+    "ImageFile": "images/products/ua_storm_jacket.png",
+    "Summary": "Stay dry in light rain.",
+    "Type": {
+      "Id": "63ca5d8849bc19321bb8e5f1",
+      "Name": "Jackets"
+    },
+    "Brand": {
+      "Id": "63ca5e655ec1fdc49bd9327d",
+      "Name": "Under Armour"
+    }
+  },
+  {
+    "Id": "602d2149e773f2a3990b485",
+    "Name": "New Balance Fresh Foam 1080v12",
+    "Description": "High-cushion running shoes with Fresh Foam midsole.",
+    "Price": 3299,
+    "ImageFile": "images/products/nb_freshfoam_1080.png",
+    "Summary": "Premium comfort for long runs.",
+    "Type": {
+      "Id": "63ca5d4bc3a8a58f47299f97",
+      "Name": "Shoes"
+    },
+    "Brand": {
+      "Id": "63ca5e59065163c16451bd73",
+      "Name": "New Balance"
+    }
+  }
+]
