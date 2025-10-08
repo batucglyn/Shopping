@@ -8,7 +8,8 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+var cs = builder.Configuration.GetValue<string>("DatabaseSettings:ConnectionString");
+Console.WriteLine($"[DISCOUNT] Using Connection String: {cs?.Replace("Password=Password@1", "Password=****")}");
 //Mediatr
 var assemblies = new Assembly[]
 {
