@@ -51,7 +51,12 @@ public class BasketController : ControllerBase
 
 
     }
-
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Checkout([FromBody] BasketCheckOutDto dto)
+    {
+        await _mediator.Send(new CheckOutBasketCommand(dto));
+        return Accepted();
+    }
 
 
 

@@ -1,5 +1,8 @@
 ﻿using Azure.Core;
+using EventBus.Messages.Events;
+using Newtonsoft.Json;
 using Ordering.Commands;
+using Ordering.Constants;
 using Ordering.DTOs;
 using Ordering.Entities;
 using System.Runtime.CompilerServices;
@@ -118,11 +121,63 @@ namespace Ordering.Mappers
                 Cvv = dto.Cvv,
                 PaymentMethod = dto.PaymentMethod
 
-
-
             };
-
         }
+
+        public static CheckOutOrderCommand ToCheckoutOrderCommand(this BasketCheckOutEvent message)
+        {
+            return new CheckOutOrderCommand
+            {
+                UserName = message.UserName!,
+                TotalPrice = message.TotalPrice??0,
+                FirstName = message.FirstName!,
+                LastName = message.LastName!,
+                EmailAddress = message.EmailAddress!,
+                AddressLine = message.AddressLine!,
+                Country = message.Country!,
+                State = message.State!,
+                ZipCode = message.ZipCode!,
+                CardName = message.CardName!,
+                CardNumber = message.CardNumber!,
+                Expiration = message.Expiration!,
+                Cvv = message.Cvv!,
+                PaymentMethod = message.PaymentMethod ?? 0
+            };
+        }
+
+
+        public static OutboxMessage ToOutboxMessage(this Order order)
+        {
+            return new OutboxMessage
+            {
+                CorrelationId = Guid.NewGuid().ToString(),
+                Type = OutboxMessageTypes.OrderCreated,
+                OccurredOn = DateTime.UtcNow,
+                Content = JsonConvert.SerializeObject(new
+                {
+                    order.Id,
+                    order.UserName,
+                    order.TotalPrice,
+                    order.FirstName,
+                    order.LastName,
+                    order.AddressLine,
+                    order.Country,
+                    order.State,
+                    order.ZipCode,
+                    // PCI sensitive (kart bilgileri)
+                    order.CardName,
+                    order.CardNumber,
+                    order.Expiration,
+                    order.Cvv,
+                    order.PaymentMethod,
+                    order.Status
+                })
+            };
+        }
+
+
+
+
 
     }
 }

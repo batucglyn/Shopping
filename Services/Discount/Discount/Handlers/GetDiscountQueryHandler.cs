@@ -1,4 +1,5 @@
 ﻿using Discount.DTOs;
+using Discount.Entities;
 using Discount.Extensions;
 using Discount.Mappers;
 using Discount.Queries;
@@ -39,11 +40,11 @@ namespace Discount.Handlers
             if (coupon is null ||
                 string.Equals(coupon.ProductName, "No Discount", StringComparison.OrdinalIgnoreCase))
             {
-                throw new RpcException(
-                    new Status(
-                        StatusCode.NotFound,
-                        $"Discount for the ProductName = '{productName}' not found"
-                    )
+                return new CouponDto(
+                    0,
+                    productName,
+                    "Kupon Bulunamadı",
+                    0
                 );
             }
             return coupon.ToDto();

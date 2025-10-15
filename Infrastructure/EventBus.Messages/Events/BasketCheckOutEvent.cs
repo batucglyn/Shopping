@@ -1,7 +1,15 @@
-﻿namespace Ordering.Entities
+﻿using EventBus.Messages.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EventBus.Messages.Events
 {
-    public class Order:BaseEntity
+    public class BasketCheckOutEvent:BaseIntegrationEvent
     {
+
         public string? UserName { get; set; }
         public decimal? TotalPrice { get; set; }
         public string? FirstName { get; set; }
@@ -11,8 +19,6 @@
         public string? Country { get; set; }
         public string? State { get; set; }
         public string? ZipCode { get; set; }
-
-        //PaymentSummary
         public string? CardName { get; set; }
         public string? CardNumber { get; set; }
         public string? Expiration { get; set; }
@@ -20,6 +26,8 @@
         public int? PaymentMethod { get; set; }
 
 
-        public OrderStatus Status { get; set; } = OrderStatus.Pending;
+
+
+
     }
 }

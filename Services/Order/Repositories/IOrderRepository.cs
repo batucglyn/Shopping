@@ -6,5 +6,7 @@ namespace Ordering.Repositories
     {
         Task<IEnumerable<Order>> GetOrderByUserNameAsync(string username);
 
+        Task AddOutboxMessageAsync(OutboxMessage outboxMessage);
+
     }
 }
