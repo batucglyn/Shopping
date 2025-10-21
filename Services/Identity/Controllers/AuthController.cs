@@ -1,6 +1,7 @@
 ﻿using Identity.DTOs;
 using Identity.Mapper;
 using Identity.Models;
+using Identity.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,37 +20,63 @@ namespace Identity.Controllers
         private readonly IConfiguration _configuration;
         private readonly ILogger<AuthController> _logger;
         private readonly UserManager<ApplicationUser> _userManager;
-        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, UserManager<ApplicationUser> userManager)
+        private readonly EmailService _emailService;
+        public AuthController(IConfiguration configuration, ILogger<AuthController> logger, UserManager<ApplicationUser> userManager, EmailService emailService)
         {
             _configuration = configuration;
             _logger = logger;
             _userManager = userManager;
+            _emailService = emailService;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult>Register(RegisterDto registerDto)
         {
-            var user =registerDto.ToEntity();
-
-            var result =await _userManager.CreateAsync(user,registerDto.Password);
+            var user = registerDto.ToEntity();
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
             _logger.LogInformation($"User {registerDto.Email} registration attempted");
+
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
-            return Ok(result);
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var confirmationLink = Url.Action(nameof(ConfirmEmail), "Auth", new { userId = user.Id, token = token }, Request.Scheme);
+
+            await _emailService.SendEmailAsync(user.Email, "Email Doğrulama",
+                $"<h3>Merhaba {user.FirstName},</h3><p>Email adresinizi doğrulamak için <a href='{confirmationLink}'>buraya tıklayın</a>.</p>");
+
+            return Ok("Kayıt başarılı! Lütfen e-postanızı doğrulayın.");
 
 
         }
         [HttpPost("login")]
         public async Task<IActionResult>Login(LoginDto loginDto)
         {
-           var user= await _userManager.FindByEmailAsync(loginDto.Email);
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
             if (user == null || !await _userManager.CheckPasswordAsync(user, loginDto.Password))
-                return Unauthorized(loginDto.Email);
+                return Unauthorized("Email veya şifre yanlış.");
+
+            if (!await _userManager.IsEmailConfirmedAsync(user))
+                return BadRequest("E-posta adresinizi doğrulamadan giriş yapamazsınız.");
 
             var token = GenerateToken(user);
-             _logger.LogInformation($"User{user.Email}logged in successfully.");
-            return Ok( new {token});
+            _logger.LogInformation($"User {user.Email} logged in successfully.");
+            return Ok(new { token });
         }
+        [HttpGet("confirmemail")]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return BadRequest("Kullanıcı bulunamadı.");
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            if (!result.Succeeded)
+                return BadRequest("E-posta doğrulama başarısız.");
+
+            return Ok("E-posta doğrulandı, artık giriş yapabilirsiniz!");
+        }
+
 
         private string GenerateToken(ApplicationUser user)
         {

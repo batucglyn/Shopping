@@ -92,7 +92,7 @@ public class CatalogController : ControllerBase
         return NoContent();
     }
 
-    [HttpPut]
+    [HttpPut("{productId}")]
     public async Task<IActionResult> UpdateProduct(string productId, UpdateProductDto updateProductDto)
     {
 

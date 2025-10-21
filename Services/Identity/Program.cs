@@ -1,5 +1,7 @@
 using Identity.Data;
 using Identity.Models;
+using Identity.Services;
+using MailKit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +18,8 @@ builder.Services.AddDbContext<AppIdentityDbContext>(options =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppIdentityDbContext>()
     .AddDefaultTokenProviders();
+builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>
+    opt.TokenLifespan = TimeSpan.FromHours(2)); // email doðrulama linki 2 saat geçerli
 
 //Add Jwt Authentication
 var jwtConfig = builder.Configuration.GetSection("Jwt");
@@ -36,10 +40,12 @@ builder.Services.AddAuthentication(options =>
         ValidAudience = jwtConfig["Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig["Key"]))
     };
-});
+}); 
 
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+//send mail
+builder.Services.AddScoped<EmailService>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
